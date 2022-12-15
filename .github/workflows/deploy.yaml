@@ -1,0 +1,26 @@
+name: Multi-Cloud CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Build Docker Images
+        run: |
+          docker build -t service1 ./app/service1
+          docker build -t service2 ./app/service2
+
+      - name: Push to AWS ECR
+        run: |
+          # Add AWS ECR push commands here
+          
+      - name: Push to GCP Container Registry
+        run: |
+          # Add GCP push commands here
